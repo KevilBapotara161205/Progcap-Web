@@ -1,0 +1,434 @@
+/* ================================================
+   PROGCAP RBH DASHBOARD — TechnoYuga Design System
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800&display=swap');
+
+/* ── CSS Variables (Design Tokens) ──────────────────────────────────────── */
+:root {
+  /* Brand */
+  --primary:        #0535E9;
+  --primary-dark:   #0426C0;
+  --primary-light:  #3A5FFF;
+  --accent:         #F10BF8;
+  --accent-dark:    #C508CC;
+
+  /* Gradients */
+  --gradient-brand: linear-gradient(90deg, #F10BF8 0%, #0535E9 100%);
+  --gradient-hero:  linear-gradient(135deg, #0535E9 0%, #0A1A8A 100%);
+  --gradient-card:  linear-gradient(135deg, #0535E9 0%, #3A5FFF 100%);
+
+  /* Semantic */
+  --success:        #00B96B;
+  --success-light:  #E6FFF5;
+  --warning:        #FA8C16;
+  --warning-light:  #FFF7E6;
+  --error:          #FF4D4F;
+  --error-light:    #FFF1F0;
+  --info:           #1677FF;
+
+  /* AI / Purple */
+  --ai-purple:      #7C3AED;
+  --ai-purple-light: #EDE9FE;
+
+  /* Surfaces */
+  --bg:             #F4F6FF;
+  --surface:        #FFFFFF;
+  --dark-navy:      #080E28;
+  --dark-navy-2:    #0D1535;
+
+  /* Text */
+  --text-primary:   #0A0F1E;
+  --text-secondary: #64748B;
+  --text-disabled:  #B0BAD3;
+  --text-on-dark:   #FFFFFF;
+
+  /* Borders */
+  --border:         #E4E9FF;
+  --divider:        #EEF1FF;
+
+  /* Shadows */
+  --shadow-card:    0 2px 16px rgba(5, 53, 233, 0.08);
+  --shadow-hover:   0 8px 32px rgba(5, 53, 233, 0.14);
+  --shadow-primary: 0 8px 24px rgba(5, 53, 233, 0.30);
+
+  /* Radii */
+  --radius-sm:      8px;
+  --radius-md:      12px;
+  --radius-lg:      16px;
+  --radius-xl:      20px;
+  --radius-pill:    100px;
+
+  /* Sidebar */
+  --sidebar-width:  240px;
+  --sidebar-bg:     #080E28;
+  --sidebar-hover:  rgba(255, 255, 255, 0.07);
+  --sidebar-active: rgba(255, 255, 255, 0.13);
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+
+  /* Transitions */
+  --ease:           cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Ant Design Layout Overrides ────────────────────────────────────────── */
+.ant-layout {
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+/* ── Sidebar (Dark Navy TechnoYuga Style) ───────────────────────────────── */
+.ant-layout-sider {
+  background: var(--dark-navy) !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border-right: 1px solid var(--sidebar-border) !important;
+}
+
+.ant-layout-sider .ant-menu {
+  background: transparent !important;
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  border-right: none !important;
+  padding: 4px 0 !important;
+}
+
+.ant-layout-sider .ant-menu-item {
+  color: rgba(255, 255, 255, 0.65) !important;
+  border-radius: var(--radius-sm) !important;
+  margin: 2px 8px !important;
+  height: 42px !important;
+  line-height: 42px !important;
+  transition: all 0.2s var(--ease) !important;
+}
+
+.ant-layout-sider .ant-menu-item:hover {
+  background: var(--sidebar-hover) !important;
+  color: #fff !important;
+}
+
+.ant-layout-sider .ant-menu-item-selected {
+  background: var(--sidebar-active) !important;
+  color: #fff !important;
+  border-left: 3px solid var(--primary) !important;
+}
+
+.ant-layout-sider .ant-menu-item .anticon,
+.ant-layout-sider .ant-menu-item svg {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+.ant-layout-sider .ant-menu-item-selected .anticon,
+.ant-layout-sider .ant-menu-item-selected svg,
+.ant-layout-sider .ant-menu-item:hover .anticon,
+.ant-layout-sider .ant-menu-item:hover svg {
+  color: #fff !important;
+}
+
+/* Sider collapse trigger */
+.ant-layout-sider-trigger {
+  background: var(--dark-navy-2) !important;
+  border-top: 1px solid var(--sidebar-border) !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.ant-layout-header {
+  background: var(--surface) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: 0 1px 8px rgba(5, 53, 233, 0.06) !important;
+  padding: 0 24px !important;
+  height: 64px !important;
+}
+
+/* ── Content ─────────────────────────────────────────────────────────────── */
+.ant-layout-content {
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  height: calc(100vh - 64px) !important;
+  background: var(--bg) !important;
+}
+
+/* ── Cards ──────────────────────────────────────────────────────────────── */
+.ant-card {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-card) !important;
+  background: var(--surface) !important;
+  transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease) !important;
+}
+
+.ant-card:hover {
+  box-shadow: var(--shadow-hover) !important;
+}
+
+.ant-card-head {
+  border-bottom: 1px solid var(--divider) !important;
+  font-weight: 700 !important;
+  color: var(--text-primary) !important;
+  padding: 0 20px !important;
+  min-height: 52px !important;
+  background: transparent !important;
+}
+
+.ant-card-body {
+  padding: 20px !important;
+}
+
+/* ── Tables ─────────────────────────────────────────────────────────────── */
+.ant-table-wrapper {
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+}
+
+.ant-table {
+  background: var(--surface) !important;
+}
+
+.ant-table-thead > tr > th {
+  background: var(--bg) !important;
+  font-weight: 700 !important;
+  font-size: 12px !important;
+  color: var(--text-secondary) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  padding: 12px 16px !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.ant-table-tbody > tr > td {
+  padding: 14px 16px !important;
+  border-bottom: 1px solid var(--divider) !important;
+  color: var(--text-primary) !important;
+  font-size: 13px !important;
+  transition: background 0.15s !important;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: rgba(5, 53, 233, 0.03) !important;
+}
+
+.ant-table-tbody > tr:last-child > td {
+  border-bottom: none !important;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.ant-btn-primary {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+  transition: all 0.2s var(--ease) !important;
+}
+
+.ant-btn-primary:hover {
+  background: var(--primary-dark) !important;
+  border-color: var(--primary-dark) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-primary) !important;
+}
+
+.ant-btn {
+  border-radius: var(--radius-sm) !important;
+  font-weight: 500 !important;
+  border-color: var(--border) !important;
+}
+
+/* ── Tags / Badges ───────────────────────────────────────────────────────── */
+.ant-tag {
+  border-radius: var(--radius-pill) !important;
+  font-weight: 600 !important;
+  font-size: 11px !important;
+  padding: 2px 10px !important;
+  border: none !important;
+}
+
+/* ── Select / Dropdown ───────────────────────────────────────────────────── */
+.ant-select-selector {
+  border-radius: var(--radius-sm) !important;
+  border-color: var(--border) !important;
+}
+
+.ant-picker {
+  border-radius: var(--radius-sm) !important;
+  border-color: var(--border) !important;
+}
+
+/* ── Drawer ──────────────────────────────────────────────────────────────── */
+.ant-drawer-content {
+  border-radius: 0 !important;
+}
+
+.ant-drawer-header {
+  border-bottom: 1px solid var(--divider) !important;
+}
+
+/* ── Divider ──────────────────────────────────────────────────────────────── */
+.ant-divider {
+  border-color: var(--divider) !important;
+}
+
+/* ── Stat Card ───────────────────────────────────────────────────────────── */
+.stat-card {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--border) !important;
+  background: var(--surface) !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease) !important;
+  cursor: default;
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow-hover) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* ── Sidebar Logo ────────────────────────────────────────────────────────── */
+.sidebar-logo {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--sidebar-border);
+  flex-shrink: 0;
+  gap: 10px;
+}
+
+/* ── Page Header Utility ─────────────────────────────────────────────────── */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── AI Section ──────────────────────────────────────────────────────────── */
+.ai-section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.1), rgba(5, 53, 233, 0.1));
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: var(--radius-pill);
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ai-purple);
+}
+
+/* ── Recharts wrapper ────────────────────────────────────────────────────── */
+.recharts-wrapper {
+  width: 100% !important;
+}
+
+/* ── TechnoYuga Brand Classes ────────────────────────────────────────────── */
+.ty-gradient-bg {
+  background: var(--gradient-brand) !important;
+  color: #fff !important;
+}
+
+.ty-gradient-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+}
+
+.ty-gradient-border {
+  background: var(--gradient-brand);
+  padding: 2px;
+  border-radius: var(--radius-lg);
+}
+
+.ty-gradient-border > * {
+  background: var(--surface);
+  border-radius: calc(var(--radius-lg) - 2px);
+}
+
+.ty-gradient-btn {
+  background: var(--gradient-brand) !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  border-radius: var(--radius-sm) !important;
+  transition: opacity 0.2s, transform 0.2s !important;
+}
+
+.ty-gradient-btn:hover {
+  opacity: 0.9 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-disabled);
+}
+
+/* ── Animations ─────────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.4s var(--ease) both;
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, var(--border) 25%, var(--divider) 50%, var(--border) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
